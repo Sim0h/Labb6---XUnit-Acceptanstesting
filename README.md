@@ -6,7 +6,7 @@ Ange det andra talet: 3.
 Förväntat resultat: Applikationen ska skriva ut "Resultatet är: 8".
 
 
-#Acceptanstest 2: Multiplikation av två decimaltal
+#Acceptanstest 2: Multiplikation av två decimaltal#
 Öppna applikationen.
 Välj räknesättet "Multiplikation".
 Ange det första talet: 2.5.
