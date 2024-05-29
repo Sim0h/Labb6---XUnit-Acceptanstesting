@@ -9,20 +9,14 @@ namespace Labb6___XUnit_Acceptanstestning
     public class Calculator
     {
         private List<Calculation> calculations = new List<Calculation>();
+
         public void Start()
         {
             bool continueCalculating = true;
 
             while (continueCalculating)
             {
-                Console.WriteLine("Välj ett räknesätt:");
-                Console.WriteLine("1. Addition");
-                Console.WriteLine("2. Subtraktion");
-                Console.WriteLine("3. Multiplikation");
-                Console.WriteLine("4. Division");
-                Console.WriteLine("5. Visa tidigare beräkningar");
-                Console.WriteLine("6. Avsluta");
-
+                DisplayMenu();
                 int choice = GetUserChoice();
 
                 switch (choice)
@@ -31,7 +25,7 @@ namespace Labb6___XUnit_Acceptanstestning
                     case 2:
                     case 3:
                     case 4:
-                        PerformCalculation((Operator)(choice - 1));
+                        CalculateAndDisplayResult((Operator)(choice - 1));
                         break;
                     case 5:
                         ShowPreviousCalculations();
@@ -46,17 +40,29 @@ namespace Labb6___XUnit_Acceptanstestning
             }
         }
 
+        private void DisplayMenu()
+        {
+            Console.WriteLine("Välj ett räknesätt:");
+            Console.WriteLine("1. Addition");
+            Console.WriteLine("2. Subtraktion");
+            Console.WriteLine("3. Multiplikation");
+            Console.WriteLine("4. Division");
+            Console.WriteLine("5. Visa tidigare beräkningar");
+            Console.WriteLine("6. Avsluta");
+        }
+
         private int GetUserChoice()
         {
             int choice;
-            while (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 6)
+            do
             {
-                Console.WriteLine("Ogiltigt val. Försök igen.");
-            }
+                Console.Write("Ange ditt val: ");
+            } while (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 6);
+
             return choice;
         }
 
-        private void PerformCalculation(Operator operation)
+        private void CalculateAndDisplayResult(Operator operation)
         {
             double num1 = GetUserNumber("Ange det första talet: ");
             double num2 = GetUserNumber("Ange det andra talet: ");
@@ -65,6 +71,11 @@ namespace Labb6___XUnit_Acceptanstestning
             calculations.Add(calculation);
 
             double result = calculation.Result;
+            DisplayResult(result);
+        }
+
+        private void DisplayResult(double result)
+        {
             Console.WriteLine($"Resultatet är: {result}");
         }
 
@@ -80,12 +91,11 @@ namespace Labb6___XUnit_Acceptanstestning
         private double GetUserNumber(string message)
         {
             double num;
-            Console.Write(message);
-            while (!double.TryParse(Console.ReadLine(), out num))
+            do
             {
-                Console.WriteLine("Ogiltig inmatning. Försök igen.");
                 Console.Write(message);
-            }
+            } while (!double.TryParse(Console.ReadLine(), out num));
+
             return num;
         }
 
