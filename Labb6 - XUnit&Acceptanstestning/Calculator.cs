@@ -1,4 +1,4 @@
-﻿using Labb6___XUnit_Acceptanstestning.services;
+﻿using Labb6___XUnit_Acceptanstestning;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +9,13 @@ namespace Labb6___XUnit_Acceptanstestning
 {
     public class Calculator
     {
-        private readonly IUserInterface _userInterface;
+        //private readonly IUserInterface _userInterface;
         private List<Calculation> calculations = new List<Calculation>();
 
-        public Calculator(IUserInterface userInterface)
-        {
-            _userInterface = userInterface;
-        }
+        //public Calculator(IUserInterface userInterface)
+        //{
+        //    _userInterface = userInterface;
+        //}
 
         public void Start()
         {
@@ -38,7 +38,7 @@ namespace Labb6___XUnit_Acceptanstestning
                     case 6:
                         return false; // Stop the loop
                     default:
-                        _userInterface.WriteLine("Ogiltigt val. Försök igen.");
+                        Console.WriteLine("Ogiltigt val. Försök igen.");
                         break;
                 }
 
@@ -58,13 +58,20 @@ namespace Labb6___XUnit_Acceptanstestning
 
         public void DisplayMenu()
         {
-            _userInterface.WriteLine("Välj ett räknesätt:");
-            _userInterface.WriteLine("1. Addition");
-            _userInterface.WriteLine("2. Subtraktion");
-            _userInterface.WriteLine("3. Multiplikation");
-            _userInterface.WriteLine("4. Division");
-            _userInterface.WriteLine("5. Visa tidigare beräkningar");
-            _userInterface.WriteLine("6. Avsluta");
+            //_userInterface.WriteLine("Välj ett räknesätt:");
+            //_userInterface.WriteLine("1. Addition");
+            //_userInterface.WriteLine("2. Subtraktion");
+            //_userInterface.WriteLine("3. Multiplikation");
+            //_userInterface.WriteLine("4. Division");
+            //_userInterface.WriteLine("5. Visa tidigare beräkningar");
+            //_userInterface.WriteLine("6. Avsluta");
+            Console.WriteLine("Välj ett räknesätt:");
+            Console.WriteLine("1. Addition");
+            Console.WriteLine("2. Subtraktion");
+            Console.WriteLine("3. Multiplikation");
+            Console.WriteLine("4. Division");
+            Console.WriteLine("5. Visa tidigare beräkningar");
+            Console.WriteLine("6. Avsluta");
         }
 
         public int GetUserChoice()
@@ -72,8 +79,8 @@ namespace Labb6___XUnit_Acceptanstestning
             int choice;
             do
             {
-                _userInterface.Write("Ange ditt val: ");
-            } while (!int.TryParse(_userInterface.ReadLine(), out choice) || choice < 1 || choice > 6);
+                Console.Write("Ange ditt val: ");
+            } while (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 6);
 
             return choice;
         }
@@ -135,15 +142,15 @@ namespace Labb6___XUnit_Acceptanstestning
 
         public void DisplayResult(double result)
         {
-            _userInterface.WriteLine($"Resultatet är: {result}");
+            Console.WriteLine($"Resultatet är: {result}");
         }
 
         public void ShowPreviousCalculations()
         {
-            _userInterface.WriteLine("Tidigare beräkningar:");
+            Console.WriteLine("Tidigare beräkningar:");
             foreach (var calculation in GetPreviousCalculations())
             {
-                _userInterface.WriteLine(calculation);
+                Console.WriteLine(calculation);
             }
         }
 
@@ -162,8 +169,8 @@ namespace Labb6___XUnit_Acceptanstestning
             double num;
             do
             {
-                _userInterface.Write(message);
-            } while (!double.TryParse(_userInterface.ReadLine(), out num));
+                Console.Write(message);
+            } while (!double.TryParse(Console.ReadLine(), out num));
 
             return num;
         }

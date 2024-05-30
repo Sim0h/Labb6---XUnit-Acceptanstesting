@@ -1,4 +1,4 @@
-﻿using Labb6___XUnit_Acceptanstestning.services;
+﻿using Labb6___XUnit_Acceptanstestning;
 
 namespace Labb6___XUnit_Acceptanstestning
 {
@@ -7,8 +7,8 @@ namespace Labb6___XUnit_Acceptanstestning
 
         static void Main(string[] args)
         {
-            IUserInterface userInterface = new ConsoleUser();
-            Calculator calculator = new Calculator(userInterface);
+            
+            Calculator calculator = new Calculator();
             calculator.Start();
         }
     }

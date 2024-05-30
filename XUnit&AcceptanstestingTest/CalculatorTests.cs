@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Xunit;
 using Labb6___XUnit_Acceptanstestning;
-using Labb6___XUnit_Acceptanstestning.services;
 using Moq;
 
 namespace XUnit_AcceptanstestingTest
@@ -12,122 +11,87 @@ namespace XUnit_AcceptanstestingTest
         [Fact]
         public void TestAdditionOperation()
         {
-            // Arrange
-            var mockUI = new Mock<IUserInterface>();
-            var outputs = new List<string>();
-            mockUI.SetupSequence(ui => ui.ReadLine())
-                .Returns("1")  
-                .Returns("5")  
-                .Returns("3")  
-                .Returns("6"); 
-            mockUI.Setup(ui => ui.WriteLine(It.IsAny<string>()))
-                .Callback<string>(s => outputs.Add(s));
 
-            var calculator = new Calculator(mockUI.Object);
+            var calc = new Calculator();
+            double a = 5;
+            double b = 3;
+            double expected = 8;
 
-            // Act
-            calculator.Start();
+            //Act
+            double result = calc.Addition(a, b);
 
-            // Assert
-            Assert.Contains("Resultatet är: 8", outputs); 
+            //Assert
+            Assert.Equal(expected, result);
         }
 
 
         [Fact]
         public void TestSubtractionOperation()
         {
-            // Arrange
-            var mockUI = new Mock<IUserInterface>();
-            var outputs = new List<string>();
-            mockUI.SetupSequence(ui => ui.ReadLine())
-                .Returns("2")  
-                .Returns("20")  
-                .Returns("15")  
-                .Returns("6"); 
-            mockUI.Setup(ui => ui.WriteLine(It.IsAny<string>()))
-                .Callback<string>(s => outputs.Add(s));
+         
+            //Arrange
+            var calc = new Calculator();
+            double a = 20;
+            double b = 15;
+            double expected = 5;
 
-            var calculator = new Calculator(mockUI.Object);
+            //Act
+            double result = calc.Subtraction(a, b);
 
-            // Act
-            calculator.Start();
-
-            // Assert
-            Assert.Contains("Resultatet är: 5", outputs); 
+            //Assert
+            Assert.Equal(expected, result);
 
         }
-        
+
         [Fact]
         public void TestMultiplicationOperation()
         {
-            // Arrange
-            var mockUI = new Mock<IUserInterface>();
-            var outputs = new List<string>();
-            mockUI.SetupSequence(ui => ui.ReadLine())
-                .Returns("3")  
-                .Returns("2")  
-                .Returns("1") 
-                .Returns("6"); 
-            mockUI.Setup(ui => ui.WriteLine(It.IsAny<string>()))
-                .Callback<string>(s => outputs.Add(s));
+            //Arrange
+            var calc = new Calculator();
+            double a = 2;
+            double b = 1;
+            double expected = 2;
 
-            var calculator = new Calculator(mockUI.Object);
+            //Act
+            double result = calc.Multiplication(a, b);
 
-            // Act
-            calculator.Start();
-
-            // Assert
-            Assert.Contains("Resultatet är: 2", outputs); 
+            //Assert
+            Assert.Equal(expected, result);
         }
 
         [Fact]
         public void TestDivisionOperation()
         {
-            // Arrange
-            var mockUI = new Mock<IUserInterface>();
-            var outputs = new List<string>();
-            mockUI.SetupSequence(ui => ui.ReadLine())
-                .Returns("4")  
-                .Returns("10")  
-                .Returns("5")  
-                .Returns("6"); 
-            mockUI.Setup(ui => ui.WriteLine(It.IsAny<string>()))
-                .Callback<string>(s => outputs.Add(s));
+            //Arrange
+            var calc = new Calculator();
+            double a = 20;
+            double b = 4;
+            double expected = 5;
 
-            var calculator = new Calculator(mockUI.Object);
+            //Act
+            double result = calc.Division(a, b);
 
-            // Act
-            calculator.Start();
-
-            // Assert
-            Assert.Contains("Resultatet är: 2", outputs); 
+            //Assert
+            Assert.Equal(expected, result);
         }
 
 
         [Theory]
-        [InlineData(10,2,12)]
-        [InlineData(30,10,40)]
-        [InlineData(102,2,104)]
-        [InlineData(14,2,16)]
-        [InlineData(25,5,30)]
+        [InlineData(10, 2, 12)]
+        [InlineData(30, 10, 40)]
+        [InlineData(102, 2, 104)]
+        [InlineData(14, 2, 16)]
+        [InlineData(25, 5, 30)]
         public void TestAdditionOperation_With_Theory(double num1, double num2, double expected)
         {
-            var mockUI = new Mock<IUserInterface>();
-            var outputs = new List<string>();
-            mockUI.SetupSequence(ui => ui.ReadLine())
-                .Returns("1")
-                .Returns(num1.ToString())
-                .Returns(num2.ToString())
-                .Returns("6");
-            mockUI.Setup(ui=> ui.WriteLine(It.IsAny<string>())).Callback<string>(s=> outputs.Add(s));
-
-            var calculator = new Calculator(mockUI.Object);
-
+            //Arrange
+            var calc = new Calculator();
+            
             //Act
-            calculator.Start();
+            double result = calc.Addition(num1, num2);
 
             //Assert
-            Assert.Contains($"Resultatet är: {expected}", outputs);
+            Assert.Equal(expected, result);
         }
 
         [Theory]
@@ -138,22 +102,14 @@ namespace XUnit_AcceptanstestingTest
         [InlineData(25, 5, 20)]
         public void TestSubtractionOperation_With_Theory(double num1, double num2, double expected)
         {
-            var mockUI = new Mock<IUserInterface>();
-            var outputs = new List<string>();
-            mockUI.SetupSequence(ui => ui.ReadLine())
-                .Returns("2")
-                .Returns(num1.ToString())
-                .Returns(num2.ToString())
-                .Returns("6");
-            mockUI.Setup(ui => ui.WriteLine(It.IsAny<string>())).Callback<string>(s => outputs.Add(s));
-
-            var calculator = new Calculator(mockUI.Object);
+            //Arrange
+            var calc = new Calculator();
 
             //Act
-            calculator.Start();
+            double result = calc.Subtraction(num1, num2);
 
             //Assert
-            Assert.Contains($"Resultatet är: {expected}", outputs);
+            Assert.Equal(expected, result);
         }
 
         [Theory]
@@ -164,22 +120,14 @@ namespace XUnit_AcceptanstestingTest
         [InlineData(25, 5, 125)]
         public void TestMultiplicationOperation_With_Theory(double num1, double num2, double expected)
         {
-            var mockUI = new Mock<IUserInterface>();
-            var outputs = new List<string>();
-            mockUI.SetupSequence(ui => ui.ReadLine())
-                .Returns("3")
-                .Returns(num1.ToString())
-                .Returns(num2.ToString())
-                .Returns("6");
-            mockUI.Setup(ui => ui.WriteLine(It.IsAny<string>())).Callback<string>(s => outputs.Add(s));
-
-            var calculator = new Calculator(mockUI.Object);
+            //Arrange
+            var calc = new Calculator();
 
             //Act
-            calculator.Start();
+            double result = calc.Multiplication(num1, num2);
 
             //Assert
-            Assert.Contains($"Resultatet är: {expected}", outputs);
+            Assert.Equal(expected, result);
         }
 
 
@@ -191,30 +139,18 @@ namespace XUnit_AcceptanstestingTest
         [InlineData(25, 5, 5)]
         public void TestDivisionOperation_With_Theory(double num1, double num2, double expected)
         {
-            var mockUI = new Mock<IUserInterface>();
-            var outputs = new List<string>();
-            mockUI.SetupSequence(ui => ui.ReadLine())
-                .Returns("4")
-                .Returns(num1.ToString())
-                .Returns(num2.ToString())
-                .Returns("6");
-            mockUI.Setup(ui => ui.WriteLine(It.IsAny<string>())).Callback<string>(s => outputs.Add(s));
-
-            var calculator = new Calculator(mockUI.Object);
+            //Arrange
+            var calc = new Calculator();
 
             //Act
-            calculator.Start();
+            double result = calc.Division(num1, num2);
 
             //Assert
-            Assert.Contains($"Resultatet är: {expected}", outputs);
+            Assert.Equal(expected, result);
         }
 
 
-        [Fact]
-        public void PrintListTest()
-        {
-
-        }
+     
 
     }
 }

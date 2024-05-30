@@ -1,5 +1,5 @@
 ﻿using Labb6___XUnit_Acceptanstestning;
-using Labb6___XUnit_Acceptanstestning.services;
+using Labb6___XUnit_Acceptanstestning;
 using Moq;
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ namespace XUnit_AcceptanstestingTest
     [Binding]
     public class CalculatorSteps
     {
-        private readonly IUserInterface _userInterface;
+        
         private readonly Calculator _calculator;
         private double _number1;
         private double _number2;
@@ -22,12 +22,13 @@ namespace XUnit_AcceptanstestingTest
 
         public CalculatorSteps()
         {
-            
-            var mockUI = new Mock<IUserInterface>();
 
-            mockUI.Setup(ui => ui.ReadLine()).Returns("6");
-            
-            _calculator = new Calculator(mockUI.Object);
+            //var mockUI = new Mock<IUserInterface>();
+
+            //mockUI.Setup(ui => ui.ReadLine()).Returns("6");
+
+            //_calculator = new Calculator(mockUI.Object);
+            _calculator = new Calculator();
         }
 
         [When(@"I enter (.*)")]
