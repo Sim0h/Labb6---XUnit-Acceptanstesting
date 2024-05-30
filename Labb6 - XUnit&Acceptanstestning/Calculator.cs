@@ -9,13 +9,8 @@ namespace Labb6___XUnit_Acceptanstestning
 {
     public class Calculator
     {
-        //private readonly IUserInterface _userInterface;
+        
         private List<Calculation> calculations = new List<Calculation>();
-
-        //public Calculator(IUserInterface userInterface)
-        //{
-        //    _userInterface = userInterface;
-        //}
 
         public void Start()
         {
@@ -36,13 +31,13 @@ namespace Labb6___XUnit_Acceptanstestning
                         ShowPreviousCalculations();
                         break;
                     case 6:
-                        return false; // Stop the loop
+                        return false; 
                     default:
                         Console.WriteLine("Ogiltigt val. Försök igen.");
                         break;
                 }
 
-                return true; // Continue the loop
+                return true; 
             });
         }
 
@@ -58,13 +53,6 @@ namespace Labb6___XUnit_Acceptanstestning
 
         public void DisplayMenu()
         {
-            //_userInterface.WriteLine("Välj ett räknesätt:");
-            //_userInterface.WriteLine("1. Addition");
-            //_userInterface.WriteLine("2. Subtraktion");
-            //_userInterface.WriteLine("3. Multiplikation");
-            //_userInterface.WriteLine("4. Division");
-            //_userInterface.WriteLine("5. Visa tidigare beräkningar");
-            //_userInterface.WriteLine("6. Avsluta");
             Console.WriteLine("Välj ett räknesätt:");
             Console.WriteLine("1. Addition");
             Console.WriteLine("2. Subtraktion");
