@@ -8,7 +8,7 @@
 4. **Ange det andra talet: 3.**
 5. **Förväntat resultat:** Applikationen ska skriva ut "Resultatet är: 8".
 
-### Acceptanstest 2: Multiplikation av två decimaltal
+### Acceptanstest 2: Subtraktion av två decimaltal
 
 1. **Öppna applikationen.**
 2. **Välj räknesättet "Subtraction".**
@@ -24,7 +24,7 @@
 4. **Ange det andra talet: 1.5.**
 5. **Förväntat resultat:** Applikationen ska skriva ut "Resultatet är: 3.75".
 
- ### Acceptanstest 2: Multiplikation av två decimaltal
+ ### Acceptanstest 2: Division av två decimaltal
 
 1. **Öppna applikationen.**
 2. **Välj räknesättet "Division".**
