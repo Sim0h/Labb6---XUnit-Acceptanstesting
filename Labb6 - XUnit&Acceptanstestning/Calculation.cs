@@ -11,10 +11,10 @@ namespace Labb6___XUnit_Acceptanstestning
     {
         public double Number1 { get; }
         public double Number2 { get; }
-        public Operator Operator { get; }
+        public Calculator.Operator Operator { get; }
         public double Result { get; }
 
-        public Calculation(double num1, double num2, Operator op)
+        public Calculation(double num1, double num2, Calculator.Operator op)
         {
             Number1 = num1;
             Number2 = num2;
@@ -26,13 +26,13 @@ namespace Labb6___XUnit_Acceptanstestning
         {
             switch (Operator)
             {
-                case Operator.Addition:
+                case Calculator.Operator.Addition:
                     return Number1 + Number2;
-                case Operator.Subtraction:
+                case Calculator.Operator.Subtraction:
                     return Number1 - Number2;
-                case Operator.Multiplication:
+                case Calculator.Operator.Multiplication:
                     return Number1 * Number2;
-                case Operator.Division:
+                case Calculator.Operator.Division:
                     if (Number2 != 0)
                         return Number1 / Number2;
                     else
@@ -54,13 +54,13 @@ namespace Labb6___XUnit_Acceptanstestning
         {
             switch (Operator)
             {
-                case Operator.Addition:
+                case Calculator.Operator.Addition:
                     return "+";
-                case Operator.Subtraction:
+                case Calculator.Operator.Subtraction:
                     return "-";
-                case Operator.Multiplication:
+                case Calculator.Operator.Multiplication:
                     return "*";
-                case Operator.Division:
+                case Calculator.Operator.Division:
                     return "/";
                 default:
                     throw new InvalidOperationException("Ogiltig operator.");

@@ -1,11 +1,14 @@
-﻿namespace Labb6___XUnit_Acceptanstestning
+﻿using Labb6___XUnit_Acceptanstestning.services;
+
+namespace Labb6___XUnit_Acceptanstestning
 {
     internal class Program
     {
 
         static void Main(string[] args)
         {
-            Calculator calculator = new Calculator();
+            IUserInterface userInterface = new ConsoleUser();
+            Calculator calculator = new Calculator(userInterface);
             calculator.Start();
         }
     }
